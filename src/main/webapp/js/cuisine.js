@@ -31,7 +31,7 @@ function loadCommand(){
 							"<p>"+nomPlat+" : "+quantite+"</p></div>");
 				}
 			}else{
-				$('.inner').append("<div class='table col-sm-4' id=tableN"+table+"><h2 class='soustitre'>Table N"+table+"</h2>" +
+				$('.inner').append("<div class='tableService col-sm-3' id=tableN"+table+"><h2 class='soustitre'>Table N"+table+"</h2>" +
 						"<div class='plat "+nomPlat+"' data-quantite='"+quantite+"'><p>"+nomPlat+" :  "+quantite+"</p></div>" +
 						"</div>");
 			}

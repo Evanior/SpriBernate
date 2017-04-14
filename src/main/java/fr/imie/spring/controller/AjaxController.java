@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.imie.spring.model.AjaxResponseModel;
@@ -49,7 +50,7 @@ public class AjaxController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/panier/{table}/add/{plat}")
+	@RequestMapping(value="/panier/{table}/add/{plat}",method=RequestMethod.POST)
 	public AjaxResponseModel<PlatModel> addPanierByTable(@PathVariable("table") int table,
 			@PathVariable("plat") String plat) {
 		AjaxResponseModel<PlatModel> resp = new AjaxResponseModel<>();
@@ -58,7 +59,7 @@ public class AjaxController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/panier/{table}/remove")
+	@RequestMapping(value="/panier/{table}/remove",method=RequestMethod.POST)
 	public AjaxResponseModel<PlatModel> removePanierByTable(@PathVariable("table") int table) {
 		AjaxResponseModel<PlatModel> resp = new AjaxResponseModel<>();
 		panierService.removePanierByTable(table);
@@ -66,7 +67,7 @@ public class AjaxController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/panier/{table}/remove/{plat}")
+	@RequestMapping(value="/panier/{table}/remove/{plat}",method=RequestMethod.POST)
 	public AjaxResponseModel<PlatModel> removePlatPanierByTable(@PathVariable("table") int table,
 			@PathVariable("plat") String plat) {
 		AjaxResponseModel<PlatModel> resp = new AjaxResponseModel<>();
@@ -75,7 +76,7 @@ public class AjaxController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/panier/{table}/submit")
+	@RequestMapping(value="/panier/{table}/submit",method=RequestMethod.POST)
 	public AjaxResponseModel<PlatModel> submitPanierByTable(@PathVariable("table") int table) {
 		AjaxResponseModel<PlatModel> resp = new AjaxResponseModel<>();
 		commandService.saveCommand(table);
