@@ -1,4 +1,8 @@
 tr.data:hover{
 	cursor:pointer;
-	background-color: yellow;
+	background-color: #e7ff37;
+}
+td, th{
+	padding: 5px;
+	text-align: center;
 }

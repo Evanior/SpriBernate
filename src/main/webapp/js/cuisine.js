@@ -1,7 +1,7 @@
 $(function(){
 	bindAction();
 	loadCommand();
-	//setInterval(loadCommand, 5000);
+	setInterval(loadCommand, 5000);
 });
 
 function bindAction(){
