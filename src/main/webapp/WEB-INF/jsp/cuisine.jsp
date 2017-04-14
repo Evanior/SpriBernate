@@ -6,14 +6,14 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Cuisine</title>
-	<link type="text/css" href="<c:url value="/css/bootstarp.min.css"/>" rel="stylesheet"/>
+	<link type="text/css" href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet"/>
 	<link type="text/css" href="<c:url value="/css/cuisine.css"/>" rel="stylesheet"/>
 </head>
 <body>
-	<header class="blockHeader">
+	<header class="blockHeader container">
 		<h1 class="titre">Plat Commander</h1>
 	</header>
-	<main class="blockMain contnaire">
+	<main class="blockMain container">
 		<div class="inner row">
 		
 		</div>
@@ -22,7 +22,7 @@
 		var context = '<c:url value="/" />';
 	</script>
 	<script src="<c:url value="/js/jquery.min.js"/>"></script>
-	<script src="<c:url value="/js/bootstarp.min.js"/>"></script>
+	<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
 	<script src="<c:url value="/js/cuisine.js"/>"></script>
 </body>
 </html>
