@@ -2,15 +2,10 @@ package fr.imie.spring.model;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,13 +27,11 @@ public class PlatModel {
 	@Column
 	private double prix;
 	
-	/*@ManyToMany(mappedBy="list_plat", fetch = FetchType.LAZY)
-	private Set<PanierModel> paniers;
-	@ManyToMany(mappedBy="list_plat", fetch = FetchType.LAZY)
-	private Set<CommandModel> commands;*/
-	
 	@OneToMany(mappedBy="plat", targetEntity=PanierPlatJoined.class)
-	private Set<PanierPlatJoined> joined;
+	private Set<PanierPlatJoined> joinedPanier;
+	
+	@OneToMany(mappedBy="plat", targetEntity=CommandPlatJoined.class)
+	private Set<PanierPlatJoined> joinedCommands;
 	
 	public int getId() {
 		return id;
@@ -64,24 +57,26 @@ public class PlatModel {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-	/*public Set<PanierModel> getPaniers() {
-		return paniers;
-	}
-	public void setPanniers(Set<PanierModel> paniers) {
-		this.paniers = paniers;
-	}
-	public Set<CommandModel> getCommands() {
-		return commands;
-	}
-	public void setCommands(Set<CommandModel> commands) {
-		this.commands = commands;
-	}*/
 	
 	public Set<PanierPlatJoined> getJoined() {
-		return joined;
+		return joinedPanier;
 	}
 
 	public void setJoined(Set<PanierPlatJoined> joined) {
-		this.joined = joined;
+		this.joinedPanier = joined;
 	}
+	public Set<PanierPlatJoined> getJoinedPanier() {
+		return joinedPanier;
+	}
+	public void setJoinedPanier(Set<PanierPlatJoined> joinedPanier) {
+		this.joinedPanier = joinedPanier;
+	}
+	public Set<PanierPlatJoined> getJoinedCommands() {
+		return joinedCommands;
+	}
+	public void setJoinedCommands(Set<PanierPlatJoined> joinedCommands) {
+		this.joinedCommands = joinedCommands;
+	}
+	
+	
 }

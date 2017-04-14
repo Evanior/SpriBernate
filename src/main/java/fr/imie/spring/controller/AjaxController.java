@@ -63,6 +63,15 @@ public class AjaxController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("/panier/{table}/remove/{plat}")
+	public AjaxResponseModel<PlatModel> removePlatPanierByTable(@PathVariable("table") int table,
+			@PathVariable("plat") String plat) {
+		AjaxResponseModel<PlatModel> resp = new AjaxResponseModel<>();
+		panierService.removePlatPanierByTable(table, plat);
+		return resp;
+	}
+	
+	@ResponseBody
 	@RequestMapping("/panier/{table}/submit")
 	public AjaxResponseModel<PlatModel> submitPanierByTable(@PathVariable("table") String table) {
 		AjaxResponseModel<PlatModel> resp = new AjaxResponseModel<>();

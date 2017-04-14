@@ -41,4 +41,16 @@ public class PanierPlatDAO {
 		
 		em.persist(myJointure);
 	}
+
+	@Transactional
+	public void removePanierPlat(PanierModel panier, PlatModel plat) {
+		PanierPlatJoined myJointure = getJoinPanierPlat(panier, plat);
+		int qte = myJointure.getQuantite();
+		if(qte > 1){
+			myJointure.setQuantite(myJointure.getQuantite()-1);
+			em.persist(myJointure);
+		}else{
+			em.remove(myJointure);			
+		}
+	}
 }

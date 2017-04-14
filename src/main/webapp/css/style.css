@@ -1,4 +1,4 @@
-tr:hover{
+tr.data:hover{
 	cursor:pointer;
 	background-color: yellow;
 }

@@ -32,7 +32,6 @@ public class PanierDAO {
 	}
 	
 	public List<PlatModel> getPlatByTable(int table){
-		PanierModel pan = getPanierByTable(table);
 		String vue =  "SELECT nom, prix, quantite FROM panier "
 				+ "INNER JOIN panier_plat ON panier.id_panier = panier_plat.id_panier "
 				+ "INNER JOIN plat ON plat.id_plat = panier_plat.id_plat where num_table = :table";

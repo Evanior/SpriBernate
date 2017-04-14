@@ -44,4 +44,10 @@ public class PanierService {
 	public void removePanierByTable(int table){
 		panierDAO.removePanierByTable(table);
 	}
+	
+	public void removePlatPanierByTable(int table, String plat){
+		PlatModel p = platService.getPlatByName(plat);
+		PanierModel pan = getPanierByTable(table);
+		panierPlatService.removePanierPlat(pan, p);
+	}
 }

@@ -2,18 +2,18 @@ package fr.imie.spring.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "commande")
+@Table(name = "command")
 public class CommandModel {
 	
 	@Id
@@ -24,8 +24,8 @@ public class CommandModel {
 	@Column(name="num_table",unique=true)
 	private int table;
 
-	@ManyToMany
-	private Set<PlatModel> list_plat;
+	@OneToMany(mappedBy="command", targetEntity=CommandPlatJoined.class, cascade=CascadeType.ALL)
+	private Set<CommandPlatJoined> joined;
 
 	public int getId() {
 		return id;
@@ -35,14 +35,6 @@ public class CommandModel {
 		this.id = id;
 	}
 
-	public Set<PlatModel> getListPlat() {
-		return list_plat;
-	}
-
-	public void setListPlat(Set<PlatModel> listPlat) {
-		this.list_plat = listPlat;
-	}
-
 	public int getTable() {
 		return table;
 	}
@@ -50,7 +42,13 @@ public class CommandModel {
 	public void setTable(int table) {
 		this.table = table;
 	}
-	
-	
+
+	public Set<CommandPlatJoined> getJoined() {
+		return joined;
+	}
+
+	public void setJoined(Set<CommandPlatJoined> joined) {
+		this.joined = joined;
+	}
 	
 }

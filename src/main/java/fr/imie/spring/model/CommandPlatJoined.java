@@ -13,18 +13,18 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name="panier_plat")
-public class PanierPlatJoined {
+@Table(name="command_plat")
+public class CommandPlatJoined {
 	
 	@Id
 	@GeneratedValue(generator="keygen")
 	@GenericGenerator(strategy="increment", name = "keygen")
-	@Column(name="id_panier_plat")
-	private int id_panier_plat;
+	@Column(name="id_command_plat")
+	private int id;
 
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
-    @JoinColumn(name="id_panier")
-    private PanierModel panier;
+    @JoinColumn(name="id_command")
+    private CommandModel command;
 
     @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.MERGE)
     @JoinColumn(name="id_plat")
@@ -33,20 +33,20 @@ public class PanierPlatJoined {
     @Column(name="quantite")
     private int quantite;
 
-	public int getId_panier_plat() {
-		return id_panier_plat;
+	public int getId() {
+		return id;
 	}
 
-	public void setId_panier_plat(int id_panier_plat) {
-		this.id_panier_plat = id_panier_plat;
+	public void setId(int id_command_plat) {
+		this.id = id_command_plat;
 	}
 
-	public PanierModel getPanier() {
-		return panier;
+	public CommandModel getCommand() {
+		return command;
 	}
 
-	public void setPanier(PanierModel panier) {
-		this.panier = panier;
+	public void setCommand(CommandModel commands) {
+		this.command = command;
 	}
 
 	public PlatModel getPlat() {
@@ -64,4 +64,6 @@ public class PanierPlatJoined {
 	public void setQuantite(int quantite) {
 		this.quantite = quantite;
 	}
+
+	
 }

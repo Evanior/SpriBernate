@@ -16,4 +16,8 @@ public class PanierPlatService {
 	public void addPlatPanier(PanierModel panier, PlatModel plat){
 		panierPlatDAO.addPlatPanier(panier, plat);
 	}
+
+	public void removePanierPlat(PanierModel panier, PlatModel plat) {
+		panierPlatDAO.removePanierPlat(panier, plat);
+	}
 }
