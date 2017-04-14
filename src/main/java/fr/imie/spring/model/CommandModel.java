@@ -19,7 +19,7 @@ public class CommandModel {
 	@Id
 	@GeneratedValue(generator="keygen")
 	@GenericGenerator(strategy="increment", name = "keygen")
-	@Column(name="id_commande")
+	@Column(name="id_command")
 	private int id;
 	@Column(name="num_table",unique=true)
 	private int table;

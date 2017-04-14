@@ -6,6 +6,7 @@ $(function(){
 function bindAction(){
 	bindClick('.data', platClicked);
 	bindClick('#annulerPanier', annulPanier);
+	bindClick('#validePanier', validePanier);
 	bindClick('.supPlat', removePlatPanier);
 }
 
@@ -63,6 +64,22 @@ function annulPanier(){
 				
 			}else{					
 				loadPanier();
+			}
+		}
+	});
+}
+
+function validePanier(){
+	console.log('click');
+	var url = context+'panier/'+numTable+'/submit';
+	$.ajax({
+		method : "POST",
+		url : url,
+		success: function(response){
+			if(response.error){
+				
+			}else{					
+				annulPanier();
 			}
 		}
 	});

@@ -6,13 +6,23 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Cuisine</title>
-	<link type="text/css" href="<c:url value="/css/style.css"/>" rel="stylesheet"/>
+	<link type="text/css" href="<c:url value="/css/bootstarp.min.css"/>" rel="stylesheet"/>
+	<link type="text/css" href="<c:url value="/css/cuisine.css"/>" rel="stylesheet"/>
 </head>
 <body>
-	
+	<header class="blockHeader">
+		<h1 class="titre">Plat Commander</h1>
+	</header>
+	<main class="blockMain contnaire">
+		<div class="inner row">
+		
+		</div>
+	</main>
 	<script type="text/javascript">
 		var context = '<c:url value="/" />';
 	</script>
-	<script src="<c:url value="/js/app.js"/>"></script>
+	<script src="<c:url value="/js/jquery.min.js"/>"></script>
+	<script src="<c:url value="/js/bootstarp.min.js"/>"></script>
+	<script src="<c:url value="/js/cuisine.js"/>"></script>
 </body>
 </html>

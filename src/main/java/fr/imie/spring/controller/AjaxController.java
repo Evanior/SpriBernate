@@ -1,8 +1,6 @@
 package fr.imie.spring.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import fr.imie.spring.model.AjaxResponseModel;
-import fr.imie.spring.model.PanierPlatJoined;
 import fr.imie.spring.model.PlatModel;
+import fr.imie.spring.service.CommandPlatService;
+import fr.imie.spring.service.CommandService;
 import fr.imie.spring.service.PanierService;
 import fr.imie.spring.service.PlatService;
 
@@ -23,6 +22,10 @@ public class AjaxController {
 	private PlatService platService;
 	@Autowired
 	private PanierService panierService;
+	@Autowired
+	private CommandService commandService;
+	@Autowired
+	private CommandPlatService commandPlatService;
 	
 	@ResponseBody
 	@RequestMapping("/plats/list")
@@ -73,8 +76,21 @@ public class AjaxController {
 	
 	@ResponseBody
 	@RequestMapping("/panier/{table}/submit")
-	public AjaxResponseModel<PlatModel> submitPanierByTable(@PathVariable("table") String table) {
+	public AjaxResponseModel<PlatModel> submitPanierByTable(@PathVariable("table") int table) {
 		AjaxResponseModel<PlatModel> resp = new AjaxResponseModel<>();
+		commandService.saveCommand(table);
+		return resp;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/command")
+	public AjaxResponseModel<PlatModel> getAllPlatCommand() {
+		AjaxResponseModel<PlatModel> resp = new AjaxResponseModel<>();
+		List<PlatModel> list = commandService.getPlatCommand();	//commandPlatService.getAllCommandPlat();
+		if(list.isEmpty()){
+			return resp;
+		}
+		resp.setData(list);
 		return resp;
 	}
 	

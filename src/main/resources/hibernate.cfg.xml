@@ -23,5 +23,6 @@
         <mapping class="fr.imie.spring.model.PanierModel"></mapping>
         <mapping class="fr.imie.spring.model.CommandModel"></mapping>
         <mapping class="fr.imie.spring.model.PanierPlatJoined"></mapping>
+        <mapping class="fr.imie.spring.model.CommandPlatJoined"></mapping>
     </session-factory>
 </hibernate-configuration>

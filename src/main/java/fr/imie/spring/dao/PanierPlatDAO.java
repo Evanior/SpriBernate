@@ -1,5 +1,8 @@
 package fr.imie.spring.dao;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -52,5 +55,13 @@ public class PanierPlatDAO {
 		}else{
 			em.remove(myJointure);			
 		}
+	}
+
+	public Set<PanierPlatJoined> getAllPlatByTable(PanierModel panier) {
+		String query = "from PanierPlatJoined where id_panier = :id_panier";
+		Query q = em.createQuery(query);
+		q.setParameter("id_panier", panier.getId());
+		Set<PanierPlatJoined> set = new HashSet<PanierPlatJoined>(q.getResultList());
+		return set;
 	}
 }

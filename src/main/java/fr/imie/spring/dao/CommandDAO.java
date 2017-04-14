@@ -33,21 +33,22 @@ public class CommandDAO {
 	}
 	
 	public List<PlatModel> getPlatCommand(){
-		String vue =  "SELECT nom, quantite FROM command "
-				+ "INNER JOIN command_plat ON command.id_panier = command_plat.id_panier "
-				+ "INNER JOIN plat ON plat.id_plat = command_plat.id_plat";
+		String vue =  "SELECT nom, quantite, num_table FROM command "
+				+ "NATURAL JOIN command_plat "
+				+ "NATURAL JOIN plat";
 		Query q = em.createNativeQuery(vue);
 		return q.getResultList();
 	}
 	
 	@Transactional
-	public void addCommandByTable(int table){
+	public CommandModel addCommandByTable(int table){
 		CommandModel cmd = getCommandByTable(table);
 		if(cmd == null){
 			cmd = new CommandModel();
 			cmd.setTable(table);
 		}
 		em.persist(cmd);
+		return cmd;
 	}
 	
 }

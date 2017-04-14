@@ -1,5 +1,9 @@
 package fr.imie.spring.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -27,14 +31,28 @@ public class CommandPlatDAO {
 		return (CommandPlatJoined) q.getResultList().stream().findFirst().orElse(null);
 	}
 	
+	public List<PlatModel> getAllCommandPlat() {
+		String query = "from CommandPlatJoined";
+		Query q = em.createQuery(query);
+		List<CommandPlatJoined> listCommand = q.getResultList();
+		List<PlatModel> listPlat = new ArrayList<>();
+		for(CommandPlatJoined commande : listCommand){
+			listPlat.add(commande.getPlat());
+		}
+		return listPlat;
+	}
+	
 	@Transactional
-	public void savePlatCommand(CommandModel cmd, PanierPlatJoined panier){
+	public void saveCommand(CommandModel cmd, Set<PanierPlatJoined> setPanier){
 		
-		CommandPlatJoined myJointure = new CommandPlatJoined();
-		myJointure.setCommand(cmd);
-		myJointure.setPlat(panier.getPlat());
-		myJointure.setQuantite(panier.getQuantite());
-		em.persist(myJointure);	
+		for(PanierPlatJoined panier : setPanier){
+			CommandPlatJoined myJointure = new CommandPlatJoined();
+			myJointure.setCommand(cmd);
+			myJointure.setPlat(panier.getPlat());
+			myJointure.setQuantite(panier.getQuantite());
+			em.persist(myJointure);	
+		}
+		
 	}
 
 	@Transactional

@@ -45,7 +45,7 @@ public class CommandPlatJoined {
 		return command;
 	}
 
-	public void setCommand(CommandModel commands) {
+	public void setCommand(CommandModel command) {
 		this.command = command;
 	}
 
